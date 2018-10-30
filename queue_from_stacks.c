@@ -59,7 +59,7 @@ int queue_from_stacks_isempty(struct queue_from_stacks* queue) {
 //    return 1;
 
 assert(queue);
-if (stack_isempty(queue->s1))&&(stack_isempty(queue->s2))
+if (stack_isempty(queue->s1) && stack_isempty(queue->s2))
         return 1;
     retern 0;
 }
