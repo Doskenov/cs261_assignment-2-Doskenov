@@ -70,9 +70,9 @@ int queue_from_stacks_isempty(struct queue_from_stacks* queue) {
  */
 void queue_from_stacks_enqueue(struct queue_from_stacks* queue, int value) {
     stack_push(queue->s1, value);
-     while (stack_isempty(queue->s1)){
-      stack_push(stack_pop(queue->s2), (queue->s1));
-     }
+     // while (stack_isempty(queue->s1)){
+     //  stack_push(stack_pop(queue->s2), (queue->s1));
+     // }
 
 }
 
