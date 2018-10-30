@@ -54,10 +54,10 @@ void queue_from_stacks_free(struct queue_from_stacks* queue) {
  *   Should return 1 if the queue is empty or 0 otherwise.
  */
 int queue_from_stacks_isempty(struct queue_from_stacks* queue) {
-  if (stack_isempty(queue->s1)&&stack_isempty(queue->s2))
-    return 1;
-    else
+  if (!(stack_isempty(queue->s1))&&!(stack_isempty(queue->s2)))
     return 0;
+    else
+    return 1;
 }
 
 /*
