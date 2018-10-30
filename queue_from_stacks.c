@@ -39,7 +39,7 @@ void queue_from_stacks_free(struct queue_from_stacks* queue) {
   //  struct queue_from_stacks*;
       stack_free(queue->s1);
       stack_free(queue->s2);
-      stack_free(queue);
+      free(queue);
 }
 
 /*
