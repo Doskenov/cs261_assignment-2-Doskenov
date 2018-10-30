@@ -7,7 +7,7 @@
  */
 
 #include <stdio.h>
-
+#include <stdlib.h>
 #include "list_reverse.h"
 
 /*
@@ -35,7 +35,6 @@ struct link* list_reverse(struct link* head) {
       //while (current->prev !=NULL) {
       // current->next=prev;
       // prev->next=NULL;
-
   }
 
   return prev;
