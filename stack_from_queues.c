@@ -19,12 +19,12 @@
  * your stack and return a pointer to the stack structure.
  */
 struct stack_from_queues* stack_from_queues_create() {
-  struct stack_from_queues *stack = (struct stack_from_queues *)malloc(sizeof(struct stack_from_queues));
-      assert(stack != NULL);
-      stack->q1 = queue_create();
-      stack->q2 = queue_create();
+struct stack_from_queues *stack = (struct stack_from_queues *)malloc(sizeof(struct stack_from_queues));
+assert(stack != NULL);
+stack->q1 = queue_create();
+stack->q2 = queue_create();
 
-  return stack;
+return stack;
 }
 
 /*
@@ -36,7 +36,14 @@ struct stack_from_queues* stack_from_queues_create() {
  *     exit the program with an error if stack is NULL.
  */
 void stack_from_queues_free(struct stack_from_queues* stack) {
-
+if(stack == NULL)
+{
+return;
+}
+queue_free(stack->q1);
+queue_free(stack->q2);
+free(stack);
+stack = NULL;
 }
 
 /*
