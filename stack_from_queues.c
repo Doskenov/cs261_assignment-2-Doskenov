@@ -58,7 +58,12 @@ stack = NULL;
  *   Should return 1 if the stack is empty or 0 otherwise.
  */
 int stack_from_queues_isempty(struct stack_from_queues* stack) {
-  return 1;
+assert(stack != NULL);
+if(queue_isempty(stack->q1) == QUEUE_EMPTY_RETURN_VAL && queue_isempty(stack->q2) == QUEUE_EMPTY_RETURN_VAL)
+{
+return 1;
+}
+return 0;
 }
 
 /*
@@ -70,7 +75,8 @@ int stack_from_queues_isempty(struct stack_from_queues* stack) {
  *   value - the new value to be pushed onto the stack
  */
 void stack_from_queues_push(struct stack_from_queues* stack, int value) {
-
+assert(stack != NULL);
+queue_enqueue(stack->q1,value);
 }
 
 /*
@@ -86,7 +92,33 @@ void stack_from_queues_push(struct stack_from_queues* stack, int value) {
  *   Should return the value stored at the top of the stack.
  */
 int stack_from_queues_top(struct stack_from_queues* stack) {
-  return 0;
+int tmp = 0;
+int ret = 0;
+assert(stack != NULL);
+tmp = stack_from_queues_isempty(stack);
+assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+while(1)
+{
+tmp = queue_isempty(stack->q1);
+assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+ret = queue_dequeue(stack->q1);
+queue_enqueue(stack->q2,ret);
+tmp = queue_isempty(stack->q1);
+if(tmp == QUEUE_EMPTY_RETURN_VAL)
+{
+break;
+}
+}
+while(1)
+{
+tmp = queue_isempty(stack->q2);
+if(tmp == QUEUE_EMPTY_RETURN_VAL)
+{
+break;
+}
+queue_enqueue(stack->q1, queue_dequeue(stack->q2));
+}
+return ret;
 }
 
 /*
@@ -102,5 +134,35 @@ int stack_from_queues_top(struct stack_from_queues* stack) {
  *   is popped.
  */
 int stack_from_queues_pop(struct stack_from_queues* stack) {
-  return 0;
+int tmp = 0;
+int ret = 0;
+assert(stack != NULL);
+tmp = stack_from_queues_isempty(stack);
+assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+while(1)
+{
+tmp = queue_isempty(stack->q1);
+assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+ret = queue_dequeue(stack->q1);
+tmp = queue_isempty(stack->q1);
+if(tmp == QUEUE_EMPTY_RETURN_VAL)
+{
+break;
+}
+else
+//:
+{
+queue_enqueue(stack->q2,ret);
+}
+}
+while(1)
+{
+tmp = queue_isempty(stack->q2);
+if(tmp == QUEUE_EMPTY_RETURN_VAL)
+{
+break;
+}
+queue_enqueue(stack->q1, queue_dequeue(stack->q2));
+}
+return ret;
 }
