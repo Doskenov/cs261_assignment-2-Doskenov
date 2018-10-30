@@ -76,12 +76,12 @@ return 1;*/
  */
 void queue_from_stacks_enqueue(struct queue_from_stacks* queue, int value) {
 //assert(stack);
-if (!queue_isempty(stack->q1))
-  queue_enqueue(stack->q1, value);
-  else if (!queue_isempty(stack->q2))
-  queue_enqueue(stack->q2, value);
+if (!queue_isempty(queue->q1))
+  queue_enqueue(queue->q1, value);
+  else if (!queue_isempty(queue->q2))
+  queue_enqueue(queue->q2, value);
   else
-    queue_enqueue(stack->q1, value);
+    queue_enqueue(queue->q1, value);
 
 
 //stack_push(queue->s1, value);
