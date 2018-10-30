@@ -36,7 +36,7 @@ struct link* list_reverse(struct link* head) {
       // current->next=prev;
       // prev->next=NULL;
 
-  //}
+  }
 
   return prev;
 }
