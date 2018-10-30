@@ -17,11 +17,11 @@
  * your queue and return a pointer to the queue structure.
  */
 struct queue_from_stacks* queue_from_stacks_create() {
-  // struct queue_from_stacks* queue= malloc (sizeof (struct queue_from_stacks));
-  // queue->s1 = stack_create();
-  // queue->s2 = stack_create();
-  // return queue;
-return NULL;
+   struct queue_from_stacks* queue= malloc (sizeof (struct queue_from_stacks));
+   queue->s1 = stack_create();
+   queue->s2 = stack_create();
+  return queue;
+//return NULL;
 }
 
 /*
@@ -33,9 +33,9 @@ return NULL;
  *     exit the program with an error if queue is NULL.
  */
 void queue_from_stacks_free(struct queue_from_stacks* queue) {
-  // free(queue->s1);
-  // free(queue->s2);
-  // free(queue);
+  free(queue->s1);
+  free(queue->s2);
+  free(queue);
 }
 
 /*
@@ -50,8 +50,10 @@ void queue_from_stacks_free(struct queue_from_stacks* queue) {
  *   Should return 1 if the queue is empty or 0 otherwise.
  */
 int queue_from_stacks_isempty(struct queue_from_stacks* queue) {
-
-  return 1;
+  if (stack_isempty(queue->s1)&&stack_isempty(queue->s2));
+    return 1;
+    else
+    return 0;
 }
 
 /*
@@ -63,7 +65,11 @@ int queue_from_stacks_isempty(struct queue_from_stacks* queue) {
  *   value - the new value to be enqueueed onto the queue
  */
 void queue_from_stacks_enqueue(struct queue_from_stacks* queue, int value) {
-//  if queu =
+    stack_push=(queue->s1, value);
+     while (stack_isempty(queue->s1)){
+      stack_push(stack_pop(queue->s2), (queue->s1));
+     }
+
 }
 
 /*
