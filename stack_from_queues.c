@@ -7,10 +7,12 @@
  * Email: doskenob@oregonstate.edu
  */
 
-#include <stdio.h>
-
-#include "queue.h"
-#include "stack_from_queues.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "queue.h"
+ #include "stack.h"
+ #include "stack_from_queues.h"
+ #include <assert.h>
 
 /*
  * This function should allocate and initialize all of the memory needed for
