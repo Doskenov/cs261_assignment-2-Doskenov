@@ -151,11 +151,10 @@ int ret = 0;
           break;
         }
         else
-:
-      {
+          {
       queue_enqueue(stack->q2,ret);
+          }
       }
-    }
         while(1)
         {
           tmp = queue_isempty(stack->q2);
