@@ -9,15 +9,17 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "queue.h"
 #include "stack.h"
 #include "queue_from_stacks.h"
+#include <assert.h>
 
 /*
  * This function should allocate and initialize all of the memory needed for
  * your queue and return a pointer to the queue structure.
  */
 struct queue_from_stacks* queue_from_stacks_create() {
-   struct queue_from_stacks* queue = malloc(sizeof (struct queue_from_stacks));
+   struct queue_from_stacks* queue = malloc(sizeof(struct queue_from_stacks));
    queue->s1 = stack_create();
    queue->s2 = stack_create();
   return queue;
@@ -65,7 +67,7 @@ int queue_from_stacks_isempty(struct queue_from_stacks* queue) {
  *   value - the new value to be enqueueed onto the queue
  */
 void queue_from_stacks_enqueue(struct queue_from_stacks* queue, int value) {
-    stack_push=(queue->s1, value);
+    stack_push(queue->s1, value);
      while (stack_isempty(queue->s1)){
       stack_push(stack_pop(queue->s2), (queue->s1));
      }
