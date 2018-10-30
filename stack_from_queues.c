@@ -19,10 +19,10 @@
  * your stack and return a pointer to the stack structure.
  */
 struct stack_from_queues* stack_from_queues_create() {
-struct stack_from_queues *stack = (struct stack_from_queues *)malloc(sizeof(struct stack_from_queues));
-assert(stack != NULL);
-stack->q1 = queue_create();
-stack->q2 = queue_create();
+    struct stack_from_queues *stack = (struct stack_from_queues *)malloc(sizeof(struct stack_from_queues));
+      assert(stack != NULL);
+      stack->q1 = queue_create();
+      stack->q2 = queue_create();
 
 return stack;
 }
@@ -36,14 +36,14 @@ return stack;
  *     exit the program with an error if stack is NULL.
  */
 void stack_from_queues_free(struct stack_from_queues* stack) {
-if(stack == NULL)
-{
-return;
-}
-queue_free(stack->q1);
-queue_free(stack->q2);
-free(stack);
-stack = NULL;
+    if(stack == NULL)
+      {
+        return;
+      }
+        queue_free(stack->q1);
+        queue_free(stack->q2);
+        free(stack);
+          stack = NULL;
 }
 
 /*
@@ -58,12 +58,12 @@ stack = NULL;
  *   Should return 1 if the stack is empty or 0 otherwise.
  */
 int stack_from_queues_isempty(struct stack_from_queues* stack) {
-assert(stack != NULL);
-if(queue_isempty(stack->q1) == QUEUE_EMPTY_RETURN_VAL && queue_isempty(stack->q2) == QUEUE_EMPTY_RETURN_VAL)
-{
-return 1;
-}
-return 0;
+  assert(stack != NULL);
+    if(queue_isempty(stack->q1) == QUEUE_EMPTY_RETURN_VAL && queue_isempty(stack->q2) == QUEUE_EMPTY_RETURN_VAL)
+    {
+    return 1;
+    }
+  return 0;
 }
 
 /*
@@ -75,8 +75,8 @@ return 0;
  *   value - the new value to be pushed onto the stack
  */
 void stack_from_queues_push(struct stack_from_queues* stack, int value) {
-assert(stack != NULL);
-queue_enqueue(stack->q1,value);
+  assert(stack != NULL);
+  queue_enqueue(stack->q1,value);
 }
 
 /*
@@ -94,31 +94,31 @@ queue_enqueue(stack->q1,value);
 int stack_from_queues_top(struct stack_from_queues* stack) {
 int tmp = 0;
 int ret = 0;
-assert(stack != NULL);
-tmp = stack_from_queues_isempty(stack);
-assert(tmp != QUEUE_EMPTY_RETURN_VAL);
-while(1)
-{
-tmp = queue_isempty(stack->q1);
-assert(tmp != QUEUE_EMPTY_RETURN_VAL);
-ret = queue_dequeue(stack->q1);
-queue_enqueue(stack->q2,ret);
-tmp = queue_isempty(stack->q1);
-if(tmp == QUEUE_EMPTY_RETURN_VAL)
-{
-break;
-}
-}
-while(1)
-{
-tmp = queue_isempty(stack->q2);
-if(tmp == QUEUE_EMPTY_RETURN_VAL)
-{
-break;
-}
-queue_enqueue(stack->q1, queue_dequeue(stack->q2));
-}
-return ret;
+      assert(stack != NULL);
+      tmp = stack_from_queues_isempty(stack);
+      assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+        while(1)
+        {
+          tmp = queue_isempty(stack->q1);
+          assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+          ret = queue_dequeue(stack->q1);
+          queue_enqueue(stack->q2,ret);
+          tmp = queue_isempty(stack->q1);
+            if(tmp == QUEUE_EMPTY_RETURN_VAL)
+            {
+              break;
+            }
+          }
+              while(1)
+              {
+                tmp = queue_isempty(stack->q2);
+                if(tmp == QUEUE_EMPTY_RETURN_VAL)
+                {
+                  break;
+                }
+                  queue_enqueue(stack->q1, queue_dequeue(stack->q2));
+              }
+        return ret;
 }
 
 /*
@@ -136,33 +136,34 @@ return ret;
 int stack_from_queues_pop(struct stack_from_queues* stack) {
 int tmp = 0;
 int ret = 0;
-assert(stack != NULL);
-tmp = stack_from_queues_isempty(stack);
-assert(tmp != QUEUE_EMPTY_RETURN_VAL);
-while(1)
-{
-tmp = queue_isempty(stack->q1);
-assert(tmp != QUEUE_EMPTY_RETURN_VAL);
-ret = queue_dequeue(stack->q1);
-tmp = queue_isempty(stack->q1);
-if(tmp == QUEUE_EMPTY_RETURN_VAL)
-{
-break;
-}
-else
-//:
-{
-queue_enqueue(stack->q2,ret);
-}
-}
-while(1)
-{
-tmp = queue_isempty(stack->q2);
-if(tmp == QUEUE_EMPTY_RETURN_VAL)
-{
-break;
-}
-queue_enqueue(stack->q1, queue_dequeue(stack->q2));
-}
-return ret;
+
+    assert(stack != NULL);
+    tmp = stack_from_queues_isempty(stack);
+    assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+      while(1)
+      {
+        tmp = queue_isempty(stack->q1);
+        assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+        ret = queue_dequeue(stack->q1);
+        tmp = queue_isempty(stack->q1);
+        if(tmp == QUEUE_EMPTY_RETURN_VAL)
+        {
+          break;
+        }
+        else
+:
+      {
+      queue_enqueue(stack->q2,ret);
+      }
+    }
+        while(1)
+        {
+          tmp = queue_isempty(stack->q2);
+          if(tmp == QUEUE_EMPTY_RETURN_VAL)
+          {
+          break;
+          }
+            queue_enqueue(stack->q1, queue_dequeue(stack->q2));
+          }
+  return ret;
 }
