@@ -35,7 +35,7 @@ struct queue_from_stacks* queue_from_stacks_create() {
  *     exit the program with an error if queue is NULL.
  */
 void queue_from_stacks_free(struct queue_from_stacks* queue) {
-    struct queue_from_stacks* queue;
+    struct queue_from_stacks*;
       stack_free(queue->s1);
       stack_free(queue->s2);
       stack_free(queue);
