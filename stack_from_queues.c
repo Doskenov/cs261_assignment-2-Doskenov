@@ -3,8 +3,8 @@
  * a stack using two queues.  Make sure to add your name and @oregonstate.edu
  * email address below:
  *
- * Name:
- * Email:
+ * Name: Bakhtiyar Doskenov
+ * Email: doskenob@oregonstate.edu
  */
 
 #include <stdio.h>
@@ -17,7 +17,12 @@
  * your stack and return a pointer to the stack structure.
  */
 struct stack_from_queues* stack_from_queues_create() {
-  return NULL;
+  struct stack_from_queues * st = (struct stack_from_queues *)malloc(sizeof(struct stack_from_queues));
+      assert(st != NULL);
+      st->q1 = queue_create();
+      st->q2 = queue_create();
+
+  return stack;
 }
 
 /*
