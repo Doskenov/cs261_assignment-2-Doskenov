@@ -24,5 +24,19 @@
  *   function should return NULL.
  */
 struct link* list_reverse(struct link* head) {
-  return NULL;
+  struct link* current=head;
+  struct link* prev=NULL;
+
+  while (current!=NULL) {
+    struct link* nextpoint=current->next;
+      current->next=prev;
+      prev=current;
+      current=nextpoint;
+      //while (current->prev !=NULL) {
+      // current->next=prev;
+      // prev->next=NULL;
+
+  //}
+
+  return prev;
 }
