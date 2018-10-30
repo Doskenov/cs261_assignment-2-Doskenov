@@ -110,30 +110,19 @@ int queue_from_stacks_front(struct queue_from_stacks* queue) {
           }
  return (idx);
 }*/
-
-//assert(!(queue_from_stacks_isempty(queue))||queue==NULL);
-//assert(queue);
-int before_de;
-while(!stack_isempty(queue->s1))
-{
-        stack_push(queue->s2,stack_top(queue->s1));
-        stack_pop(queue->s1);
-}
-before_de=stack_top(queue->s2);
-//stack_pop(queue->s2);
-while(!stack_isempty(queue->s2))
-{
+int idx;
+    while(!stack_isempty(queue->s1))
+    {
+    stack_push(queue->s2,stack_top(queue->s1));
+    stack_pop(queue->s1);
+    }
+      idx=stack_top(queue->s2);
+      while(!stack_isempty(queue->s2))
+      {
         stack_push(queue->s1,stack_top(queue->s2));
         stack_pop(queue->s2);
-}
-
-/*while(!(stack_isempty(queue->s1)))
-{
-        stack_push(queue->s2,stack_top(queue->s1));
-        stack_pop(queue->s1);
-}*/
-//return stack_top(queue->s2);
-return(before_de);
+      }
+return idx;
 }
 
 /*
@@ -162,17 +151,17 @@ int queue_from_stacks_dequeue(struct queue_from_stacks* queue) {
 
     return idx;
 }*/
-int idx;
+int idx1;
   while(!stack_isempty(queue->s1))
   {
     stack_push(queue->s2,stack_top(queue->s1));
     stack_pop(queue->s1);
   }
-      idx=stack_pop(queue->s2);
+      idx1=stack_pop(queue->s2);
         while(!stack_isempty(queue->s2))
         {
         stack_push(queue->s1,stack_top(queue->s2));
         stack_pop(queue->s2);
         }
-return idx;
+return idx1;
 }
