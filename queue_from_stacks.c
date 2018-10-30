@@ -3,8 +3,8 @@
  * a queue using two stacks.  Make sure to add your name and @oregonstate.edu
  * email address below:
  *
- * Name:
- * Email:
+ * Name: Bakhtiyar Doskenov
+ * Email: doskenob@oregonstate.edu
  */
 
 #include <stdio.h>
@@ -75,10 +75,10 @@ return 1;*/
  *   value - the new value to be enqueueed onto the queue
  */
 void queue_from_stacks_enqueue(struct queue_from_stacks* queue, int value) {
-    stack_push(queue->s1, value);
-     // while (stack_isempty(queue->s1)){
-     //  stack_push(stack_pop(queue->s2), (queue->s1));
-     // }
+stack_push(queue->s1, value);
+//while (stack_isempty(queue->s1)){
+//stack_push(stack_pop(queue->s2), (queue->s1));
+}
 
 }
 
