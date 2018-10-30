@@ -75,7 +75,17 @@ return 1;*/
  *   value - the new value to be enqueueed onto the queue
  */
 void queue_from_stacks_enqueue(struct queue_from_stacks* queue, int value) {
-stack_push(queue->s1, value);
+//assert(stack);
+if (!queue_isempty(stack->q1))
+  queue_enqueue(stack->q1, value);
+  else if (!queue_isempty(stack->q2))
+  queue_enqueue(stack->q2, value);
+  else
+    queue_enqueue(stack->q1, value);
+
+
+//stack_push(queue->s1, value);
+
 //while (stack_isempty(queue->s1)){
 //stack_push(stack_pop(queue->s2), (queue->s1));
 //}
