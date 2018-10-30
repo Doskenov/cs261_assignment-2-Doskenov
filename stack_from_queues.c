@@ -19,7 +19,7 @@
  * your stack and return a pointer to the stack structure.
  */
 struct stack_from_queues* stack_from_queues_create() {
-  struct stack_from_queues * stack = (struct stack_from_queues *)malloc(sizeof(struct stack_from_queues));
+  struct stack_from_queues *stack = (struct stack_from_queues *)malloc(sizeof(struct stack_from_queues));
       assert(stack != NULL);
       stack->q1 = queue_create();
       stack->q2 = queue_create();
