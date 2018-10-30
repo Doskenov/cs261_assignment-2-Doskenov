@@ -108,7 +108,7 @@ int idx;
             stack_push(queue->s1,stack_top(queue->s2));
             stack_pop(queue->s2);
           }
- return idx;
+ return (idx);
 }
 
 /*
