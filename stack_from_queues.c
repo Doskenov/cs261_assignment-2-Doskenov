@@ -13,7 +13,7 @@
  #include "stack.h"
  #include "stack_from_queues.h"
  #include <assert.h>
-
+ #define QUEUE_EMPTY_RETURN_VAL 1
 /*
  * This function should allocate and initialize all of the memory needed for
  * your stack and return a pointer to the stack structure.
