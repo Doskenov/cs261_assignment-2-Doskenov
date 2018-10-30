@@ -35,9 +35,10 @@ struct queue_from_stacks* queue_from_stacks_create() {
  *     exit the program with an error if queue is NULL.
  */
 void queue_from_stacks_free(struct queue_from_stacks* queue) {
-  stack_free(queue->s1);
-  stack_free(queue->s2);
-  stack_free(queue);
+    struct queue_from_stacks* queue;
+      stack_free(queue->s1);
+      stack_free(queue->s2);
+      stack_free(queue);
 }
 
 /*
@@ -87,7 +88,18 @@ void queue_from_stacks_enqueue(struct queue_from_stacks* queue, int value) {
  *   Should return the value stored at the front of the queue.
  */
 int queue_from_stacks_front(struct queue_from_stacks* queue) {
-  return 0;
+int idx;
+
+while (stack_isempty(queue->s1)){
+    stack_push(queue->s2, stack_top(queue->s1))
+    stack_pop(queue->s1);
+    }
+      idx=stack_top(queue->s2)
+      while(stack_isempty(queue->s2))
+        stack_push(queue->s1, stack_top(queue->s2))
+        stack_pop(queue->s2);
+
+  return idx;
 }
 
 /*
@@ -103,5 +115,17 @@ int queue_from_stacks_front(struct queue_from_stacks* queue) {
  *   is dequeued.
  */
 int queue_from_stacks_dequeue(struct queue_from_stacks* queue) {
-  return 0;
+
+  int idx;
+
+  while (stack_isempty(queue->s1)){
+      stack_push(queue->s2, stack_top(queue->s1))
+      stack_pop(queue->s1);
+      }
+        idx=stack_top(queue->s2)
+        while(stack_isempty(queue->s2))
+          stack_push(queue->s1, stack_top(queue->s2))
+          stack_pop(queue->s2);
+
+    return idx;
 }
