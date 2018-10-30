@@ -20,7 +20,7 @@
  * your queue and return a pointer to the queue structure.
  */
 struct queue_from_stacks* queue_from_stacks_create() {
-   struct queue_from_stacks* queue = malloc(sizeof(struct queue_from_stacks));
+   struct queue_from_stacks* queue=malloc(sizeof(struct queue_from_stacks));
    queue->s1 = stack_create();
    queue->s2 = stack_create();
   return queue;
@@ -92,12 +92,12 @@ int queue_from_stacks_front(struct queue_from_stacks* queue) {
 int idx;
 
 while (!stack_isempty(queue->s1)){
-    stack_push(queue->s2, stack_top(queue->s1));
+    stack_push(queue->s2,stack_top(queue->s1));
     stack_pop(queue->s1);
     }
       idx=stack_top(queue->s2);
       while(!stack_isempty(queue->s2)){
-        stack_push(queue->s1, stack_top(queue->s2));
+        stack_push(queue->s1,stack_top(queue->s2));
         stack_pop(queue->s2);
       }
   return idx;
@@ -119,12 +119,12 @@ int queue_from_stacks_dequeue(struct queue_from_stacks* queue) {
 
   int idx;
 
-  while (stack_isempty(queue->s1)){
+  while (!stack_isempty(queue->s1)){
       stack_push(queue->s2, stack_top(queue->s1));
       stack_pop(queue->s1);
       }
         idx=stack_pop(queue->s2);
-        while(stack_isempty(queue->s2));
+        while(!stack_isempty(queue->s2));
           stack_push(queue->s1, stack_top(queue->s2));
           stack_pop(queue->s2);
 
