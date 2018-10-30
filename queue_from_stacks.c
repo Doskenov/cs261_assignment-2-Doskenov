@@ -53,17 +53,17 @@ void queue_from_stacks_free(struct queue_from_stacks* queue) {
  *   Should return 1 if the queue is empty or 0 otherwise.
  */
 int queue_from_stacks_isempty(struct queue_from_stacks* queue) {
-/*  if (!(stack_isempty(queue->s1))&&!(stack_isempty(queue->s2)))
+  if (!(stack_isempty(queue->s1))&&!(stack_isempty(queue->s2)))
     return 0;
     else
     return 1;
 
-    */
-if(!(stack_isempty(queue->s1))&&!(stack_isempty(queue->s2)))
+
+/*if(!(stack_isempty(queue->s1))&&!(stack_isempty(queue->s2)))
     {
       exit(0);
     }
-return 1;
+return 1;*/
 }
 
 /*
@@ -149,13 +149,12 @@ return(before_de);
  *   is dequeued.
  */
 int queue_from_stacks_dequeue(struct queue_from_stacks* queue) {
-
-/*  int idx;
-
-  while (!stack_isempty(queue->s1)){
+/*int idx;
+  while(!stack_isempty(queue->s1))
+  {
       stack_push(queue->s2,stack_top(queue->s1));
       stack_pop(queue->s1);
-      }
+  }
         idx=stack_pop(queue->s2);
         while(!stack_isempty(queue->s2));
           stack_push(queue->s1, stack_top(queue->s2));
@@ -163,21 +162,17 @@ int queue_from_stacks_dequeue(struct queue_from_stacks* queue) {
 
     return idx;
 }*/
-int before_de;
-while(!stack_isempty(queue->s1))
-{
-        stack_push(queue->s2,stack_top(queue->s1));
-        stack_pop(queue->s1);
-}
-before_de=stack_pop(queue->s2);
-//stack_pop(queue->s2);
-while(!stack_isempty(queue->s2))
-{
+int idx;
+  while(!stack_isempty(queue->s1))
+  {
+    stack_push(queue->s2,stack_top(queue->s1));
+    stack_pop(queue->s1);
+  }
+      idx=stack_pop(queue->s2);
+        while(!stack_isempty(queue->s2))
+        {
         stack_push(queue->s1,stack_top(queue->s2));
         stack_pop(queue->s2);
-}
-//stack_pop(queue->s1);
-//stack_push(queue->s1, stack_top(queue->s2));
-//stack_pop(queue->s2);
-return before_de;
+        }
+return idx;
 }
