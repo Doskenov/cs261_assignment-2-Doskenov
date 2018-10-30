@@ -13,7 +13,7 @@
  #include "stack.h"
  #include "stack_from_queues.h"
  #include <assert.h>
- #define QUEUE_EMPTY_RETURN_VAL 1
+
 /*
  * This function should allocate and initialize all of the memory needed for
  * your stack and return a pointer to the stack structure.
@@ -59,7 +59,7 @@ void stack_from_queues_free(struct stack_from_queues* stack) {
  */
 int stack_from_queues_isempty(struct stack_from_queues* stack) {
   assert(stack != NULL);
-    //if(queue_isempty(stack->q1) == QUEUE_EMPTY_RETURN_VAL && queue_isempty(stack->q2) == QUEUE_EMPTY_RETURN_VAL)
+  
     if(queue_isempty(stack->q1) == 1 && queue_isempty(stack->q2) == 1)
     {
     return 1;
@@ -97,17 +97,17 @@ int tmp = 0;
 int ret = 0;
       assert(stack != NULL);
       tmp = stack_from_queues_isempty(stack);
-      //assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+
       assert(tmp != 1);
         while(1)
         {
           tmp = queue_isempty(stack->q1);
-          //assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+
           assert(tmp != 1);
           ret = queue_dequeue(stack->q1);
           queue_enqueue(stack->q2,ret);
           tmp = queue_isempty(stack->q1);
-            //if(tmp == QUEUE_EMPTY_RETURN_VAL)
+
             if(tmp == 1)
             {
               break;
@@ -116,7 +116,7 @@ int ret = 0;
               while(1)
               {
                 tmp = queue_isempty(stack->q2);
-                //if(tmp == QUEUE_EMPTY_RETURN_VAL)
+
                 if(tmp == 1)
                 {
                   break;
@@ -144,14 +144,14 @@ int ret = 0;
 
     assert(stack != NULL);
     tmp = stack_from_queues_isempty(stack);
-    assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+    assert(tmp != 1);
       while(1)
       {
         tmp = queue_isempty(stack->q1);
-        assert(tmp != QUEUE_EMPTY_RETURN_VAL);
+        assert(tmp != 1);
         ret = queue_dequeue(stack->q1);
         tmp = queue_isempty(stack->q1);
-        if(tmp == QUEUE_EMPTY_RETURN_VAL)
+        if(tmp == 1)
         {
           break;
         }
@@ -163,7 +163,7 @@ int ret = 0;
         while(1)
         {
           tmp = queue_isempty(stack->q2);
-          if(tmp == QUEUE_EMPTY_RETURN_VAL)
+          if(tmp == 1)
           {
           break;
           }
